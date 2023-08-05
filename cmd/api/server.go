@@ -20,12 +20,9 @@ import (
 	"github.com/go-admin-team/go-admin-core/sdk/pkg"
 	"github.com/spf13/cobra"
 
-	"github.com/bigbigliu/web_app/app/admin/models"
 	"github.com/bigbigliu/web_app/app/admin/router"
 	"github.com/bigbigliu/web_app/common/database"
-	"github.com/bigbigliu/web_app/common/global"
 	common "github.com/bigbigliu/web_app/common/middleware"
-	"github.com/bigbigliu/web_app/common/middleware/handler"
 	"github.com/bigbigliu/web_app/common/storage"
 )
 
@@ -62,11 +59,6 @@ func setup() {
 		database.Setup,
 		storage.Setup,
 	)
-	//注册监听函数
-	queue := sdk.Runtime.GetMemoryQueue("")
-	queue.Register(global.LoginLog, models.SaveLoginLog)
-	queue.Register(global.OperateLog, models.SaveOperaLog)
-	go queue.Run()
 
 	usageStr := `starting api server...`
 	log.Println(usageStr)
@@ -86,23 +78,6 @@ func run() error {
 		Addr:    fmt.Sprintf("%s:%d", config.ApplicationConfig.Host, config.ApplicationConfig.Port),
 		Handler: sdk.Runtime.GetEngine(),
 	}
-
-	//if apiCheck {
-	//	var routers = sdk.Runtime.GetRouter()
-	//	q := sdk.Runtime.GetMemoryQueue("")
-	//	mp := make(map[string]interface{}, 0)
-	//	mp["List"] = routers
-	//	message, err := sdk.Runtime.GetStreamMessage("", global.ApiCheck, mp)
-	//	if err != nil {
-	//		log.Printf("GetStreamMessage error, %s \n", err.Error())
-	//		//日志报错错误，不中断请求
-	//	} else {
-	//		err = q.Append(message)
-	//		if err != nil {
-	//			log.Printf("Append message error, %s \n", err.Error())
-	//		}
-	//	}
-	//}
 
 	go func() {
 		// 服务连接
@@ -155,13 +130,8 @@ func initRouter() {
 	default:
 		log.Fatal("not support other engine")
 	}
-	if config.SslConfig.Enable {
-		r.Use(handler.TlsHandler())
-	}
-	//r.Use(middleware.Metrics())
-	r.Use(common.Sentinel()).
-		Use(common.RequestId(pkg.TrafficKey)).
-		Use(api.SetRequestLogger)
+
+	r.Use(common.RequestId(pkg.TrafficKey)).Use(api.SetRequestLogger)
 
 	common.InitMiddleware(r)
 

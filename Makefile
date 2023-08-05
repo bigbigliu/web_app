@@ -5,25 +5,6 @@ GOPATH:=$(shell go env GOPATH)
 build:
 	CGO_ENABLED=0 go build -ldflags="-w -s" -a -installsuffix "" -o web_app .
 
-# make build-linux
-build-linux:
-	@docker build -t web_app:latest .
-	@echo "build successful"
-
-stop:
-    # delete go-admin-api container
-	@if [ $(shell docker ps -aq --filter name=go-admin --filter publish=8000) ]; then docker-compose down; fi
-	#@if [ $(shell docker ps -aq --filter name=go-admin --filter publish=8000) ]; then docker rm -f go-admin; fi
-	#@echo "go-admin stop success"
-
-
-deploy:
-
-	#@git checkout master
-	#@git pull origin master
-	make build-linux
-	make run
-
 swag-1:
 	# 生成swagger文档
 	swag init --parseDependency --parseDepth=6 --instanceName admin -o ./docs/admin
@@ -38,3 +19,6 @@ create-app:
 
 docker-build:
 	docker build -t web_app:v1 .
+
+run:
+	go run main.go server
