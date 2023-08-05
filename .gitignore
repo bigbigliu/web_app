@@ -18,9 +18,7 @@ config/settings.b.dev.yml
 cmd/migrate/migration/version-local/*
 !cmd/migrate/migration/version-local/doc.go
 docs
-# go sum
-go.sum
-config/settings.deva.yml
+.DS_Store
 # Go workspace file
 go.work
 
