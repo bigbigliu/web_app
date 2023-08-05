@@ -1,0 +1,26 @@
+.idea
+.vscode
+*/.DS_Store
+static/uploadfile
+main.exe
+*.exe
+web_app
+web_app.exe
+temp/
+temp
+vendor
+config/settings.dev.yml
+config/settings.dev.*.yml
+config/settings.dev.*.yml.log
+temp/logs
+config/settings.dev.yml.log
+config/settings.b.dev.yml
+cmd/migrate/migration/version-local/*
+!cmd/migrate/migration/version-local/doc.go
+docs
+# go sum
+go.sum
+config/settings.deva.yml
+# Go workspace file
+go.work
+
