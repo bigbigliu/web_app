@@ -3,6 +3,7 @@ package api
 import (
 	"context"
 	"fmt"
+	ext "github.com/bigbigliu/web_app/cmd"
 	"log"
 	"net/http"
 	"os"
@@ -26,7 +27,6 @@ import (
 	common "github.com/bigbigliu/web_app/common/middleware"
 	"github.com/bigbigliu/web_app/common/middleware/handler"
 	"github.com/bigbigliu/web_app/common/storage"
-	ext "github.com/bigbigliu/web_app/config"
 )
 
 var (
