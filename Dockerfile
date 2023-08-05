@@ -14,7 +14,7 @@ WORKDIR /src
 
 COPY . /src
 
-RUN GOOS=darwin CGO_ENABLED=0 GOARCH=arm64 go build -ldflags="-s -w" -o web_app
+RUN GOOS=linux CGO_ENABLED=0 GOARCH=amd64 go build -ldflags="-s -w" -o web_app
 
 FROM alpine as prod
 
