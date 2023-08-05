@@ -22,7 +22,6 @@ RUN  echo "Asia/Shanghai" > /etc/timezone \
     && rm -f /etc/localtime \
     && ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
-
 WORKDIR /svr
 
 COPY --from=builder /src/web_app /svr
