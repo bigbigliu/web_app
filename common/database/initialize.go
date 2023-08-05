@@ -15,7 +15,7 @@ import (
 	"gorm.io/gorm/logger"
 	"gorm.io/gorm/schema"
 
-	"web_app/common/global"
+	"github.com/bigbigliu/web_app/common/global"
 )
 
 // Setup 配置数据库

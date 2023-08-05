@@ -9,7 +9,7 @@ import (
 	// "github.com/go-admin-team/go-admin-core/sdk/pkg"
 	"github.com/go-admin-team/go-admin-core/sdk/pkg/jwtauth"
 	jwt "github.com/go-admin-team/go-admin-core/sdk/pkg/jwtauth"
-	common "web_app/common/middleware"
+	common "github.com/bigbigliu/web_app/common/middleware"
 	"os"
 )
 

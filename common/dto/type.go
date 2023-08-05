@@ -1,8 +1,8 @@
 package dto
 
 import (
+	"github.com/bigbigliu/web_app/common/models"
 	"github.com/gin-gonic/gin"
-	"web_app/common/models"
 )
 
 type Index interface {

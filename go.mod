@@ -1,4 +1,4 @@
-module web_app
+module github.com/bigbigliu/web_app
 
 go 1.20
 

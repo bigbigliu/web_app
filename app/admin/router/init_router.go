@@ -3,10 +3,10 @@ package router
 import (
 	"os"
 
+	common "github.com/bigbigliu/web_app/common/middleware"
 	"github.com/gin-gonic/gin"
 	log "github.com/go-admin-team/go-admin-core/logger"
 	"github.com/go-admin-team/go-admin-core/sdk"
-	common "web_app/common/middleware"
 )
 
 // InitRouter 路由初始化，不要怀疑，这里用到了

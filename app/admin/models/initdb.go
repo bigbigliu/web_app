@@ -2,11 +2,11 @@ package models
 
 import (
 	"fmt"
+	"github.com/bigbigliu/web_app/common/global"
 	"gorm.io/gorm"
 	"io/ioutil"
 	"log"
 	"strings"
-	"web_app/common/global"
 )
 
 func InitDb(db *gorm.DB) (err error) {

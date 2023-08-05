@@ -1,10 +1,10 @@
 package middleware
 
 import (
+	"github.com/bigbigliu/web_app/common/actions"
 	"github.com/gin-gonic/gin"
 	"github.com/go-admin-team/go-admin-core/sdk"
 	jwt "github.com/go-admin-team/go-admin-core/sdk/pkg/jwtauth"
-	"web_app/common/actions"
 )
 
 const (
@@ -14,7 +14,6 @@ const (
 )
 
 func InitMiddleware(r *gin.Engine) {
-	r.Use(DemoEvn())
 	// 数据库链接
 	r.Use(WithContextDb)
 	// 日志处理
@@ -28,7 +27,7 @@ func InitMiddleware(r *gin.Engine) {
 	// Secure is a middleware function that appends security
 	r.Use(Secure)
 	// 链路追踪
-	//r.Use(middleware.Trace())
+	r.Use(Trace())
 	sdk.Runtime.SetMiddleware(JwtTokenCheck, (*jwt.GinJWTMiddleware).MiddlewareFunc)
 	sdk.Runtime.SetMiddleware(RoleCheck, AuthCheckRole())
 	sdk.Runtime.SetMiddleware(PermissionCheck, actions.PermissionAction())

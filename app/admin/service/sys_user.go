@@ -2,16 +2,16 @@ package service
 
 import (
 	"errors"
-	"web_app/app/admin/models"
-	"web_app/app/admin/service/dto"
+	"github.com/bigbigliu/web_app/app/admin/models"
+	"github.com/bigbigliu/web_app/app/admin/service/dto"
 
 	log "github.com/go-admin-team/go-admin-core/logger"
 	"github.com/go-admin-team/go-admin-core/sdk/pkg"
 	"github.com/go-admin-team/go-admin-core/sdk/service"
 	"gorm.io/gorm"
 
-	"web_app/common/actions"
-	cDto "web_app/common/dto"
+	"github.com/bigbigliu/web_app/common/actions"
+	cDto "github.com/bigbigliu/web_app/common/dto"
 )
 
 type SysUser struct {

@@ -1,9 +1,9 @@
 package dto
 
 import (
-	"web_app/app/admin/models"
-	"web_app/common/dto"
-	common "web_app/common/models"
+	"github.com/bigbigliu/web_app/app/admin/models"
+	"github.com/bigbigliu/web_app/common/dto"
+	common "github.com/bigbigliu/web_app/common/models"
 )
 
 // SysConfigGetPageReq 列表或者搜索使用结构体

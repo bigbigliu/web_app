@@ -1,6 +1,6 @@
 package models
 
-import "web_app/common/models"
+import "github.com/bigbigliu/web_app/common/models"
 
 type SysPost struct {
 	PostId   int    `gorm:"primaryKey;autoIncrement" json:"postId"` //岗位编号

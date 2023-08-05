@@ -4,8 +4,8 @@ import (
 	"gorm.io/gorm"
 	"runtime"
 
-	"web_app/cmd/migrate/migration"
-	common "web_app/common/models"
+	"github.com/bigbigliu/web_app/cmd/migrate/migration"
+	common "github.com/bigbigliu/web_app/common/models"
 )
 
 func init() {

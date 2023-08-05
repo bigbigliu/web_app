@@ -1,9 +1,9 @@
 package models
 
 import (
+	"github.com/bigbigliu/web_app/common/models"
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
-	"web_app/common/models"
 )
 
 type SysUser struct {

@@ -1,10 +1,10 @@
 package dto
 
 import (
-	"web_app/app/admin/models"
-	common "web_app/common/models"
+	"github.com/bigbigliu/web_app/app/admin/models"
+	common "github.com/bigbigliu/web_app/common/models"
 
-	"web_app/common/dto"
+	"github.com/bigbigliu/web_app/common/dto"
 )
 
 // SysPostPageReq 列表或者搜索使用结构体

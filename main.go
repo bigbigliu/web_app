@@ -2,12 +2,12 @@ package main
 
 import (
 	"errors"
+	"github.com/bigbigliu/web_app/cmd/app"
 	"github.com/go-admin-team/go-admin-core/sdk/pkg"
 	"github.com/spf13/cobra"
 	"os"
-	"web_app/cmd/app"
 
-	"web_app/cmd/api"
+	"github.com/bigbigliu/web_app/cmd/api"
 )
 
 var rootCmd = &cobra.Command{
@@ -32,12 +32,8 @@ func init() {
 }
 
 // Execute : apply commands
-func Execute() {
+func main() {
 	if err := rootCmd.Execute(); err != nil {
 		os.Exit(-1)
 	}
-}
-
-func main() {
-	Execute()
 }

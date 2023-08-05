@@ -1,10 +1,10 @@
 package apis
 
 import (
+	"github.com/bigbigliu/web_app/app/admin/models"
 	"github.com/gin-gonic/gin/binding"
 	"golang.org/x/crypto/bcrypt"
 	"net/http"
-	"web_app/app/admin/models"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-admin-team/go-admin-core/sdk/api"
@@ -12,9 +12,9 @@ import (
 	_ "github.com/go-admin-team/go-admin-core/sdk/pkg/response"
 	"github.com/google/uuid"
 
-	"web_app/app/admin/service"
-	"web_app/app/admin/service/dto"
-	"web_app/common/actions"
+	"github.com/bigbigliu/web_app/app/admin/service"
+	"github.com/bigbigliu/web_app/app/admin/service/dto"
+	"github.com/bigbigliu/web_app/common/actions"
 )
 
 type SysUser struct {

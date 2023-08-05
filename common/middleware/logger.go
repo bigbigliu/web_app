@@ -4,13 +4,13 @@ import (
 	"bufio"
 	"bytes"
 	"encoding/json"
+	"github.com/bigbigliu/web_app/app/admin/service/dto"
+	"github.com/bigbigliu/web_app/common"
 	"io"
 	"io/ioutil"
 	"net/http"
 	"strings"
 	"time"
-	"web_app/app/admin/service/dto"
-	"web_app/common"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-admin-team/go-admin-core/sdk"
@@ -18,7 +18,7 @@ import (
 	"github.com/go-admin-team/go-admin-core/sdk/config"
 	"github.com/go-admin-team/go-admin-core/sdk/pkg/jwtauth/user"
 
-	"web_app/common/global"
+	"github.com/bigbigliu/web_app/common/global"
 )
 
 // LoggerToFile 日志记录到文件

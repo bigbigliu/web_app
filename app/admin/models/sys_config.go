@@ -1,7 +1,7 @@
 package models
 
 import (
-	"web_app/common/models"
+	"github.com/bigbigliu/web_app/common/models"
 )
 
 type SysConfig struct {

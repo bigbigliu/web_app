@@ -1,13 +1,13 @@
 package apis
 
 import (
+	"github.com/bigbigliu/web_app/app/admin/models"
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
 	"github.com/go-admin-team/go-admin-core/sdk/api"
-	"web_app/app/admin/models"
 
-	"web_app/app/admin/service"
-	"web_app/app/admin/service/dto"
+	"github.com/bigbigliu/web_app/app/admin/service"
+	"github.com/bigbigliu/web_app/app/admin/service/dto"
 )
 
 type SysLoginLog struct {

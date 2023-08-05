@@ -1,6 +1,6 @@
 package models
 
-import "web_app/common/models"
+import "github.com/bigbigliu/web_app/common/models"
 
 type SysDept struct {
 	DeptId   int    `json:"deptId" gorm:"primaryKey;autoIncrement;"` //部门编码

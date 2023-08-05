@@ -3,7 +3,7 @@ package dto
 import (
 	"time"
 
-	"web_app/common/dto"
+	"github.com/bigbigliu/web_app/common/dto"
 )
 
 type SysLoginLogGetPageReq struct {

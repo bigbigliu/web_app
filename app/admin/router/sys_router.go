@@ -10,8 +10,8 @@ import (
 
 	swaggerfiles "github.com/swaggo/files"
 
-	"web_app/common/middleware/handler"
-	_ "web_app/docs/admin"
+	"github.com/bigbigliu/web_app/common/middleware/handler"
+	_ "github.com/bigbigliu/web_app/docs/admin"
 )
 
 func InitSysRouter(r *gin.Engine, authMiddleware *jwt.GinJWTMiddleware) *gin.RouterGroup {

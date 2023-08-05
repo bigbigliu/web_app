@@ -19,14 +19,14 @@ import (
 	"github.com/go-admin-team/go-admin-core/sdk/pkg"
 	"github.com/spf13/cobra"
 
-	"web_app/app/admin/models"
-	"web_app/app/admin/router"
-	"web_app/common/database"
-	"web_app/common/global"
-	common "web_app/common/middleware"
-	"web_app/common/middleware/handler"
-	"web_app/common/storage"
-	ext "web_app/config"
+	"github.com/bigbigliu/web_app/app/admin/models"
+	"github.com/bigbigliu/web_app/app/admin/router"
+	"github.com/bigbigliu/web_app/common/database"
+	"github.com/bigbigliu/web_app/common/global"
+	common "github.com/bigbigliu/web_app/common/middleware"
+	"github.com/bigbigliu/web_app/common/middleware/handler"
+	"github.com/bigbigliu/web_app/common/storage"
+	ext "github.com/bigbigliu/web_app/config"
 )
 
 var (
@@ -87,22 +87,22 @@ func run() error {
 		Handler: sdk.Runtime.GetEngine(),
 	}
 
-	if apiCheck {
-		var routers = sdk.Runtime.GetRouter()
-		q := sdk.Runtime.GetMemoryQueue("")
-		mp := make(map[string]interface{}, 0)
-		mp["List"] = routers
-		message, err := sdk.Runtime.GetStreamMessage("", global.ApiCheck, mp)
-		if err != nil {
-			log.Printf("GetStreamMessage error, %s \n", err.Error())
-			//日志报错错误，不中断请求
-		} else {
-			err = q.Append(message)
-			if err != nil {
-				log.Printf("Append message error, %s \n", err.Error())
-			}
-		}
-	}
+	//if apiCheck {
+	//	var routers = sdk.Runtime.GetRouter()
+	//	q := sdk.Runtime.GetMemoryQueue("")
+	//	mp := make(map[string]interface{}, 0)
+	//	mp["List"] = routers
+	//	message, err := sdk.Runtime.GetStreamMessage("", global.ApiCheck, mp)
+	//	if err != nil {
+	//		log.Printf("GetStreamMessage error, %s \n", err.Error())
+	//		//日志报错错误，不中断请求
+	//	} else {
+	//		err = q.Append(message)
+	//		if err != nil {
+	//			log.Printf("Append message error, %s \n", err.Error())
+	//		}
+	//	}
+	//}
 
 	go func() {
 		// 服务连接
@@ -116,7 +116,6 @@ func run() error {
 			}
 		}
 	}()
-	fmt.Println(pkg.Red(string(global.LogoContent)))
 	fmt.Println(pkg.Green("Server run at:"))
 	fmt.Printf("-  Local:   %s://localhost:%d/ \r\n", "http", config.ApplicationConfig.Port)
 	fmt.Printf("-  Network: %s://%s:%d/ \r\n", pkg.GetLocaHonst(), "http", config.ApplicationConfig.Port)

@@ -1,8 +1,8 @@
 package handler
 
 import (
+	"github.com/bigbigliu/web_app/common/models"
 	"gorm.io/gorm"
-	"web_app/common/models"
 )
 
 type SysUser struct {

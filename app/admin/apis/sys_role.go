@@ -2,20 +2,20 @@ package apis
 
 import (
 	"fmt"
+	"github.com/bigbigliu/web_app/common/global"
 	"net/http"
-	"web_app/common/global"
 
+	"github.com/bigbigliu/web_app/app/admin/models"
 	"github.com/gin-gonic/gin/binding"
 	"github.com/go-admin-team/go-admin-core/sdk"
-	"web_app/app/admin/models"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-admin-team/go-admin-core/sdk/api"
 	"github.com/go-admin-team/go-admin-core/sdk/pkg/jwtauth/user"
 	_ "github.com/go-admin-team/go-admin-core/sdk/pkg/response"
 
-	"web_app/app/admin/service"
-	"web_app/app/admin/service/dto"
+	"github.com/bigbigliu/web_app/app/admin/service"
+	"github.com/bigbigliu/web_app/app/admin/service/dto"
 )
 
 type SysRole struct {

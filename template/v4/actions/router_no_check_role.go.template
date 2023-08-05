@@ -3,10 +3,10 @@ package router
 import (
     "github.com/gin-gonic/gin"
 
-    "web_app/app/{{.PackageName}}/middleware"
-    "web_app/app/{{.PackageName}}/models"
-    "web_app/app/{{.PackageName}}/service/dto"
-    "web_app/common/actions"
+    "github.com/bigbigliu/web_app/app/{{.PackageName}}/middleware"
+    "github.com/bigbigliu/web_app/app/{{.PackageName}}/models"
+    "github.com/bigbigliu/web_app/app/{{.PackageName}}/service/dto"
+    "github.com/bigbigliu/web_app/common/actions"
 )
 
 func init()  {

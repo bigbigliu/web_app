@@ -7,8 +7,8 @@ import (
 
 	"github.com/go-admin-team/go-admin-core/sdk/pkg"
 
-	"web_app/cmd/migrate/migration"
-	common "web_app/common/models"
+	"github.com/bigbigliu/web_app/cmd/migrate/migration"
+	common "github.com/bigbigliu/web_app/common/models"
 )
 
 type Menu struct {
