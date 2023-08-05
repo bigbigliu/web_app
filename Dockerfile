@@ -27,7 +27,7 @@ WORKDIR /svr
 
 COPY --from=builder /src/web_app /svr
 
-COPY --from=builder /src/config/settings.yml /svr/conf/settings.yml
+COPY --from=builder /src/config/settings.yml /svr/config/settings.yml
 
 EXPOSE 8000
 
