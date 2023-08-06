@@ -5,7 +5,6 @@ import (
 
     "github.com/bigbigliu/web_app/app/{{.PackageName}}/models"
     "github.com/bigbigliu/web_app/app/{{.PackageName}}/service/dto"
-    "github.com/bigbigliu/web_app/common/actions"
 )
 
 func init()  {

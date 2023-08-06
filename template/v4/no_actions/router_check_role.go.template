@@ -4,7 +4,6 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"github.com/bigbigliu/web_app/app/{{.PackageName}}/apis"
-	"github.com/bigbigliu/web_app/common/middleware"
 )
 
 func init() {

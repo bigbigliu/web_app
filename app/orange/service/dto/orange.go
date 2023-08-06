@@ -1,22 +1,20 @@
 package dto
 
 import (
-
 	"github.com/bigbigliu/web_app/app/orange/models"
 	"github.com/bigbigliu/web_app/common/dto"
 	common "github.com/bigbigliu/web_app/common/models"
 )
 
 type OrangeGetPageReq struct {
-	dto.Pagination     `search:"-"`
-    OrangeOrder
+	dto.Pagination `search:"-"`
+	OrangeOrder
 }
 
 type OrangeOrder struct {
-    Id string `form:"idOrder"  search:"type:order;column:id;table:orange"`
-    Name string `form:"nameOrder"  search:"type:order;column:name;table:orange"`
-    Age string `form:"ageOrder"  search:"type:order;column:age;table:orange"`
-    
+	Id   string `form:"idOrder"  search:"type:order;column:id;table:orange"`
+	Name string `form:"nameOrder"  search:"type:order;column:name;table:orange"`
+	Age  int    `form:"ageOrder"  search:"type:order;column:age;table:orange"`
 }
 
 func (m *OrangeGetPageReq) GetNeedSearch() interface{} {
@@ -24,18 +22,18 @@ func (m *OrangeGetPageReq) GetNeedSearch() interface{} {
 }
 
 type OrangeInsertReq struct {
-    Id int `json:"-" comment:""` // 
-    Name string `json:"name" comment:""`
-    Age string `json:"age" comment:""`
-    common.ControlBy
+	Id   int    `json:"-" comment:""` //
+	Name string `json:"name" comment:""`
+	Age  int    `json:"age" comment:""`
+	common.ControlBy
 }
 
-func (s *OrangeInsertReq) Generate(model *models.Orange)  {
-    if s.Id == 0 {
-        model.Model = common.Model{ Id: s.Id }
-    }
-    model.Name = s.Name
-    model.Age = s.Age
+func (s *OrangeInsertReq) Generate(model *models.Orange) {
+	if s.Id == 0 {
+		model.Model = common.Model{Id: s.Id}
+	}
+	model.Name = s.Name
+	model.Age = s.Age
 }
 
 func (s *OrangeInsertReq) GetId() interface{} {
@@ -43,18 +41,18 @@ func (s *OrangeInsertReq) GetId() interface{} {
 }
 
 type OrangeUpdateReq struct {
-    Id int `uri:"id" comment:""` // 
-    Name string `json:"name" comment:""`
-    Age string `json:"age" comment:""`
-    common.ControlBy
+	Id   int    `uri:"id" comment:""` //
+	Name string `json:"name" comment:""`
+	Age  int    `json:"age" comment:""`
+	common.ControlBy
 }
 
-func (s *OrangeUpdateReq) Generate(model *models.Orange)  {
-    if s.Id == 0 {
-        model.Model = common.Model{ Id: s.Id }
-    }
-    model.Name = s.Name
-    model.Age = s.Age
+func (s *OrangeUpdateReq) Generate(model *models.Orange) {
+	if s.Id == 0 {
+		model.Model = common.Model{Id: s.Id}
+	}
+	model.Name = s.Name
+	model.Age = s.Age
 }
 
 func (s *OrangeUpdateReq) GetId() interface{} {
@@ -63,8 +61,9 @@ func (s *OrangeUpdateReq) GetId() interface{} {
 
 // OrangeGetReq 功能获取请求参数
 type OrangeGetReq struct {
-     Id int `uri:"id"`
+	Id int `uri:"id"`
 }
+
 func (s *OrangeGetReq) GetId() interface{} {
 	return s.Id
 }

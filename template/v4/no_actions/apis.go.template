@@ -148,7 +148,6 @@ func (e {{.ClassName}}) Update(c *gin.Context) {
         e.Error(500, err, err.Error())
         return
     }
-	req.SetUpdateBy(user.GetUserId(c))
 
 	err = s.Update(&req)
 	if err != nil {

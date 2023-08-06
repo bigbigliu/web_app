@@ -1,11 +1,10 @@
 package apis
 
 import (
-    "fmt"
+	"fmt"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-admin-team/go-admin-core/sdk/api"
-	"github.com/go-admin-team/go-admin-core/sdk/pkg/jwtauth/user"
 	_ "github.com/go-admin-team/go-admin-core/sdk/pkg/response"
 
 	"github.com/bigbigliu/web_app/app/orange/models"
@@ -27,18 +26,18 @@ type Orange struct {
 // @Router /api/v1/orange/list [get]
 // @Security Bearer
 func (e Orange) GetPage(c *gin.Context) {
-    req := dto.OrangeGetPageReq{}
-    s := service.Orange{}
-    err := e.MakeContext(c).
-        MakeOrm().
-        Bind(&req).
-        MakeService(&s.Service).
-        Errors
-   	if err != nil {
-   		e.Logger.Error(err)
-   		e.Error(500, err, err.Error())
-   		return
-   	}
+	req := dto.OrangeGetPageReq{}
+	s := service.Orange{}
+	err := e.MakeContext(c).
+		MakeOrm().
+		Bind(&req).
+		MakeService(&s.Service).
+		Errors
+	if err != nil {
+		e.Logger.Error(err)
+		e.Error(500, err, err.Error())
+		return
+	}
 
 	list := make([]models.Orange, 0)
 	var count int64
@@ -46,7 +45,7 @@ func (e Orange) GetPage(c *gin.Context) {
 	err = s.GetPage(&req, &list, &count)
 	if err != nil {
 		e.Error(500, err, fmt.Sprintf("获取Orange失败，\r\n失败信息 %s", err.Error()))
-        return
+		return
 	}
 
 	e.PageOK(list, int(count), req.GetPageIndex(), req.GetPageSize(), "查询成功")
@@ -63,7 +62,7 @@ func (e Orange) GetPage(c *gin.Context) {
 func (e Orange) Get(c *gin.Context) {
 	req := dto.OrangeGetReq{}
 	s := service.Orange{}
-    err := e.MakeContext(c).
+	err := e.MakeContext(c).
 		MakeOrm().
 		Bind(&req).
 		MakeService(&s.Service).
@@ -78,10 +77,10 @@ func (e Orange) Get(c *gin.Context) {
 	err = s.Get(&req, &object)
 	if err != nil {
 		e.Error(500, err, fmt.Sprintf("获取Orange失败，\r\n失败信息 %s", err.Error()))
-        return
+		return
 	}
 
-	e.OK( object, "查询成功")
+	e.OK(object, "查询成功")
 }
 
 // Insert 创建Orange
@@ -95,23 +94,23 @@ func (e Orange) Get(c *gin.Context) {
 // @Router /api/v1/orange/create [post]
 // @Security Bearer
 func (e Orange) Insert(c *gin.Context) {
-    req := dto.OrangeInsertReq{}
-    s := service.Orange{}
-    err := e.MakeContext(c).
-        MakeOrm().
-        Bind(&req).
-        MakeService(&s.Service).
-        Errors
-    if err != nil {
-        e.Logger.Error(err)
-        e.Error(500, err, err.Error())
-        return
-    }
+	req := dto.OrangeInsertReq{}
+	s := service.Orange{}
+	err := e.MakeContext(c).
+		MakeOrm().
+		Bind(&req).
+		MakeService(&s.Service).
+		Errors
+	if err != nil {
+		e.Logger.Error(err)
+		e.Error(500, err, err.Error())
+		return
+	}
 
 	err = s.Insert(&req)
 	if err != nil {
 		e.Error(500, err, fmt.Sprintf("创建Orange失败，\r\n失败信息 %s", err.Error()))
-        return
+		return
 	}
 
 	e.OK(req.GetId(), "创建成功")
@@ -129,26 +128,25 @@ func (e Orange) Insert(c *gin.Context) {
 // @Router /api/v1/orange/{id}/edit [put]
 // @Security Bearer
 func (e Orange) Update(c *gin.Context) {
-    req := dto.OrangeUpdateReq{}
-    s := service.Orange{}
-    err := e.MakeContext(c).
-        MakeOrm().
-        Bind(&req).
-        MakeService(&s.Service).
-        Errors
-    if err != nil {
-        e.Logger.Error(err)
-        e.Error(500, err, err.Error())
-        return
-    }
-	req.SetUpdateBy(user.GetUserId(c))
+	req := dto.OrangeUpdateReq{}
+	s := service.Orange{}
+	err := e.MakeContext(c).
+		MakeOrm().
+		Bind(&req).
+		MakeService(&s.Service).
+		Errors
+	if err != nil {
+		e.Logger.Error(err)
+		e.Error(500, err, err.Error())
+		return
+	}
 
 	err = s.Update(&req)
 	if err != nil {
 		e.Error(500, err, fmt.Sprintf("修改Orange失败，\r\n失败信息 %s", err.Error()))
-        return
+		return
 	}
-	e.OK( req.GetId(), "修改成功")
+	e.OK(req.GetId(), "修改成功")
 }
 
 // Delete 删除Orange
@@ -160,23 +158,23 @@ func (e Orange) Update(c *gin.Context) {
 // @Router /api/v1/orange [delete]
 // @Security Bearer
 func (e Orange) Delete(c *gin.Context) {
-    s := service.Orange{}
-    req := dto.OrangeDeleteReq{}
-    err := e.MakeContext(c).
-        MakeOrm().
-        Bind(&req).
-        MakeService(&s.Service).
-        Errors
-    if err != nil {
-        e.Logger.Error(err)
-        e.Error(500, err, err.Error())
-        return
-    }
+	s := service.Orange{}
+	req := dto.OrangeDeleteReq{}
+	err := e.MakeContext(c).
+		MakeOrm().
+		Bind(&req).
+		MakeService(&s.Service).
+		Errors
+	if err != nil {
+		e.Logger.Error(err)
+		e.Error(500, err, err.Error())
+		return
+	}
 
 	err = s.Remove(&req)
 	if err != nil {
 		e.Error(500, err, fmt.Sprintf("删除Orange失败，\r\n失败信息 %s", err.Error()))
-        return
+		return
 	}
-	e.OK( req.GetId(), "删除成功")
+	e.OK(req.GetId(), "删除成功")
 }
