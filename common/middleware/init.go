@@ -1,10 +1,7 @@
 package middleware
 
 import (
-	"github.com/bigbigliu/web_app/common/actions"
 	"github.com/gin-gonic/gin"
-	"github.com/go-admin-team/go-admin-core/sdk"
-	jwt "github.com/go-admin-team/go-admin-core/sdk/pkg/jwtauth"
 )
 
 const (
@@ -29,6 +26,4 @@ func InitMiddleware(r *gin.Engine) {
 	// 链路追踪
 	r.Use(Trace())
 	r.Use()
-	sdk.Runtime.SetMiddleware(JwtTokenCheck, (*jwt.GinJWTMiddleware).MiddlewareFunc)
-	sdk.Runtime.SetMiddleware(PermissionCheck, actions.PermissionAction())
 }

@@ -2,12 +2,10 @@ package router
 
 import (
     "github.com/gin-gonic/gin"
-    jwt "github.com/go-admin-team/go-admin-core/sdk/pkg/jwtauth"
 
     "github.com/bigbigliu/web_app/app/{{.PackageName}}/models"
     "github.com/bigbigliu/web_app/app/{{.PackageName}}/service/dto"
     "github.com/bigbigliu/web_app/common/actions"
-    "github.com/bigbigliu/web_app/common/middleware"
 )
 
 func init()  {
@@ -15,8 +13,8 @@ func init()  {
 }
 
 // 需认证的路由代码
-func register{{.ClassName}}Router(v1 *gin.RouterGroup, authMiddleware *jwt.GinJWTMiddleware) {
-    r := v1.Group("/{{.ModuleName}}").Use(authMiddleware.MiddlewareFunc()).Use(middleware.AuthCheckRole())
+func register{{.ClassName}}Router(v1 *gin.RouterGroup) {
+    r := v1.Group("/{{.ModuleName}}")
     {
         model := &models.{{.ClassName}}{}
         r.GET("", actions.PermissionAction(), actions.IndexAction(model, new(dto.{{.ClassName}}Search), func() interface{} {
