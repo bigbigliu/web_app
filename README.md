@@ -16,6 +16,10 @@ export GOPROXY=https://goproxy.cn,direct
 * 更新依赖包
 ```go
 go mod tidy
+
+不要执行 go get -u !!!
+不要执行 go get -u !!!
+不要执行 go get -u !!!
 ```
 
 ## 运行
