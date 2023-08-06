@@ -14,7 +14,7 @@ export GO111MODULE=auto
 export GOPROXY=https://goproxy.cn,direct
 ```
 * 更新依赖包
-```go
+```bash
 go mod tidy
 
 不要执行 go get -u !!!
@@ -23,17 +23,22 @@ go mod tidy
 ```
 
 ## 运行
-```go
+```bash
 go run main.go server
 或
 make run
 ```
 
 ## 生成swagger文档
-```api
+```bash
 swag init --parseDependency --parseDepth=6 --instanceName admin -o ./docs/admin
 或
 make swag-1
+```
+
+## 构建docker镜像
+```bash
+make docker-build
 ```
 
 sys_columns.sql和sys_tables.sql必须内置到你的数据库中，才能进行代码生成
