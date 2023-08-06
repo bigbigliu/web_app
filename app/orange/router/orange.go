@@ -18,7 +18,7 @@ func registerOrangeRouter(v1 *gin.RouterGroup) {
 		r.GET("/list", api.GetPage)
 		r.GET("/detail/:id", api.Get)
 		r.POST("/create", api.Insert)
-		r.PUT("/:id", api.Update)
+		r.PUT("/edit", api.Update)
 		r.DELETE("", api.Delete)
 	}
 }

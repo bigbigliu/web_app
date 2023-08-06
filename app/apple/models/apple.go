@@ -6,7 +6,7 @@ import (
 
 )
 
-type Orange struct {
+type Apple struct {
     models.Model
     
     Name string `json:"name" gorm:"type:varchar(255);comment:Name"` 
@@ -15,15 +15,15 @@ type Orange struct {
     models.ControlBy
 }
 
-func (Orange) TableName() string {
-    return "orange"
+func (Apple) TableName() string {
+    return "apple"
 }
 
-func (e *Orange) Generate() models.ActiveRecord {
+func (e *Apple) Generate() models.ActiveRecord {
 	o := *e
 	return &o
 }
 
-func (e *Orange) GetId() interface{} {
+func (e *Apple) GetId() interface{} {
 	return e.Id
 }

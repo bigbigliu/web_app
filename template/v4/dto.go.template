@@ -13,7 +13,6 @@ import (
      {{if eq .GoType "time.Time"}}{{- $bb = true -}}{{- end -}}
      {{- end -}}
      {{- if eq $bb true -}}
-     "time"
      {{- end }}
 
 	"github.com/bigbigliu/web_app/app/{{.PackageName}}/models"
@@ -88,7 +87,7 @@ type {{.ClassName}}UpdateReq struct {
     {{- range .Columns -}}
     {{$x := .Pk}}
     {{- if ($x) }}
-    {{.GoField}} {{.GoType}} `uri:"{{.JsonField}}" comment:"{{.ColumnComment}}"` // {{.ColumnComment}}
+    {{.GoField}} {{.GoType}} `json:"{{.JsonField}}" comment:"{{.ColumnComment}}"` // {{.ColumnComment}}
     {{- else if eq .GoField "CreatedAt" -}}
     {{- else if eq .GoField "UpdatedAt" -}}
     {{- else if eq .GoField "DeletedAt" -}}

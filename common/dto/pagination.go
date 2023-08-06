@@ -1,8 +1,8 @@
 package dto
 
 type Pagination struct {
-	PageIndex int `form:"pageIndex"`
-	PageSize  int `form:"pageSize"`
+	PageIndex int `json:"pageIndex"`
+	PageSize  int `json:"pageSize"`
 }
 
 func (m *Pagination) GetPageIndex() int {

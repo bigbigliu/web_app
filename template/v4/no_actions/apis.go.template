@@ -5,7 +5,6 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-admin-team/go-admin-core/sdk/api"
-	"github.com/go-admin-team/go-admin-core/sdk/pkg/jwtauth/user"
 	_ "github.com/go-admin-team/go-admin-core/sdk/pkg/response"
 
 	"github.com/bigbigliu/web_app/app/{{.PackageName}}/models"
@@ -133,7 +132,7 @@ func (e {{.ClassName}}) Insert(c *gin.Context) {
 // @Param id path int true "id"
 // @Param data body dto.{{.ClassName}}UpdateReq true "body"
 // @Success 200 {object} response.Response	"{"code": 200, "message": "修改成功"}"
-// @Router /api/v1/{{.ModuleName}}/{id}/edit [put]
+// @Router /api/v1/{{.ModuleName}}/edit [put]
 // @Security Bearer
 func (e {{.ClassName}}) Update(c *gin.Context) {
     req := dto.{{.ClassName}}UpdateReq{}

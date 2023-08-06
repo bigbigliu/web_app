@@ -7,27 +7,27 @@ import (
 	"github.com/go-admin-team/go-admin-core/sdk/api"
 	_ "github.com/go-admin-team/go-admin-core/sdk/pkg/response"
 
-	"github.com/bigbigliu/web_app/app/orange/models"
-	"github.com/bigbigliu/web_app/app/orange/service"
-	"github.com/bigbigliu/web_app/app/orange/service/dto"
+	"github.com/bigbigliu/web_app/app/apple/models"
+	"github.com/bigbigliu/web_app/app/apple/service"
+	"github.com/bigbigliu/web_app/app/apple/service/dto"
 )
 
-type Orange struct {
+type Apple struct {
 	api.Api
 }
 
-// GetPage 获取Orange列表
-// @Summary 获取Orange列表
-// @Description 获取Orange列表
-// @Tags Orange
+// GetPage 获取Apple列表
+// @Summary 获取Apple列表
+// @Description 获取Apple列表
+// @Tags Apple
 // @Param pageSize query int false "页条数"
 // @Param pageIndex query int false "页码"
-// @Success 200 {object} response.Response{data=response.Page{list=[]models.Orange}} "{"code": 200, "data": [...]}"
-// @Router /api/v1/orange/list [get]
+// @Success 200 {object} response.Response{data=response.Page{list=[]models.Apple}} "{"code": 200, "data": [...]}"
+// @Router /api/v1/apple/list [get]
 // @Security Bearer
-func (e Orange) GetPage(c *gin.Context) {
-    req := dto.OrangeGetPageReq{}
-    s := service.Orange{}
+func (e Apple) GetPage(c *gin.Context) {
+    req := dto.AppleGetPageReq{}
+    s := service.Apple{}
     err := e.MakeContext(c).
         MakeOrm().
         Bind(&req).
@@ -39,29 +39,29 @@ func (e Orange) GetPage(c *gin.Context) {
    		return
    	}
 
-	list := make([]models.Orange, 0)
+	list := make([]models.Apple, 0)
 	var count int64
 
 	err = s.GetPage(&req, &list, &count)
 	if err != nil {
-		e.Error(500, err, fmt.Sprintf("获取Orange失败，\r\n失败信息 %s", err.Error()))
+		e.Error(500, err, fmt.Sprintf("获取Apple失败，\r\n失败信息 %s", err.Error()))
         return
 	}
 
 	e.PageOK(list, int(count), req.GetPageIndex(), req.GetPageSize(), "查询成功")
 }
 
-// Get 获取Orange
-// @Summary 获取Orange
-// @Description 获取Orange
-// @Tags Orange
+// Get 获取Apple
+// @Summary 获取Apple
+// @Description 获取Apple
+// @Tags Apple
 // @Param id path int false "id"
-// @Success 200 {object} response.Response{data=models.Orange} "{"code": 200, "data": [...]}"
-// @Router /api/v1/orange/{id} [get]
+// @Success 200 {object} response.Response{data=models.Apple} "{"code": 200, "data": [...]}"
+// @Router /api/v1/apple/{id} [get]
 // @Security Bearer
-func (e Orange) Get(c *gin.Context) {
-	req := dto.OrangeGetReq{}
-	s := service.Orange{}
+func (e Apple) Get(c *gin.Context) {
+	req := dto.AppleGetReq{}
+	s := service.Apple{}
     err := e.MakeContext(c).
 		MakeOrm().
 		Bind(&req).
@@ -72,30 +72,30 @@ func (e Orange) Get(c *gin.Context) {
 		e.Error(500, err, err.Error())
 		return
 	}
-	var object models.Orange
+	var object models.Apple
 
 	err = s.Get(&req, &object)
 	if err != nil {
-		e.Error(500, err, fmt.Sprintf("获取Orange失败，\r\n失败信息 %s", err.Error()))
+		e.Error(500, err, fmt.Sprintf("获取Apple失败，\r\n失败信息 %s", err.Error()))
         return
 	}
 
 	e.OK( object, "查询成功")
 }
 
-// Insert 创建Orange
-// @Summary 创建Orange
-// @Description 创建Orange
-// @Tags Orange
+// Insert 创建Apple
+// @Summary 创建Apple
+// @Description 创建Apple
+// @Tags Apple
 // @Accept application/json
 // @Product application/json
-// @Param data body dto.OrangeInsertReq true "data"
+// @Param data body dto.AppleInsertReq true "data"
 // @Success 200 {object} response.Response	"{"code": 200, "message": "添加成功"}"
-// @Router /api/v1/orange/create [post]
+// @Router /api/v1/apple/create [post]
 // @Security Bearer
-func (e Orange) Insert(c *gin.Context) {
-    req := dto.OrangeInsertReq{}
-    s := service.Orange{}
+func (e Apple) Insert(c *gin.Context) {
+    req := dto.AppleInsertReq{}
+    s := service.Apple{}
     err := e.MakeContext(c).
         MakeOrm().
         Bind(&req).
@@ -109,27 +109,27 @@ func (e Orange) Insert(c *gin.Context) {
 
 	err = s.Insert(&req)
 	if err != nil {
-		e.Error(500, err, fmt.Sprintf("创建Orange失败，\r\n失败信息 %s", err.Error()))
+		e.Error(500, err, fmt.Sprintf("创建Apple失败，\r\n失败信息 %s", err.Error()))
         return
 	}
 
 	e.OK(req.GetId(), "创建成功")
 }
 
-// Update 修改Orange
-// @Summary 修改Orange
-// @Description 修改Orange
-// @Tags Orange
+// Update 修改Apple
+// @Summary 修改Apple
+// @Description 修改Apple
+// @Tags Apple
 // @Accept application/json
 // @Product application/json
 // @Param id path int true "id"
-// @Param data body dto.OrangeUpdateReq true "body"
+// @Param data body dto.AppleUpdateReq true "body"
 // @Success 200 {object} response.Response	"{"code": 200, "message": "修改成功"}"
-// @Router /api/v1/orange/edit [put]
+// @Router /api/v1/apple/edit [put]
 // @Security Bearer
-func (e Orange) Update(c *gin.Context) {
-    req := dto.OrangeUpdateReq{}
-    s := service.Orange{}
+func (e Apple) Update(c *gin.Context) {
+    req := dto.AppleUpdateReq{}
+    s := service.Apple{}
     err := e.MakeContext(c).
         MakeOrm().
         Bind(&req).
@@ -143,23 +143,23 @@ func (e Orange) Update(c *gin.Context) {
 
 	err = s.Update(&req)
 	if err != nil {
-		e.Error(500, err, fmt.Sprintf("修改Orange失败，\r\n失败信息 %s", err.Error()))
+		e.Error(500, err, fmt.Sprintf("修改Apple失败，\r\n失败信息 %s", err.Error()))
         return
 	}
 	e.OK( req.GetId(), "修改成功")
 }
 
-// Delete 删除Orange
-// @Summary 删除Orange
-// @Description 删除Orange
-// @Tags Orange
-// @Param data body dto.OrangeDeleteReq true "body"
+// Delete 删除Apple
+// @Summary 删除Apple
+// @Description 删除Apple
+// @Tags Apple
+// @Param data body dto.AppleDeleteReq true "body"
 // @Success 200 {object} response.Response	"{"code": 200, "message": "删除成功"}"
-// @Router /api/v1/orange [delete]
+// @Router /api/v1/apple [delete]
 // @Security Bearer
-func (e Orange) Delete(c *gin.Context) {
-    s := service.Orange{}
-    req := dto.OrangeDeleteReq{}
+func (e Apple) Delete(c *gin.Context) {
+    s := service.Apple{}
+    req := dto.AppleDeleteReq{}
     err := e.MakeContext(c).
         MakeOrm().
         Bind(&req).
@@ -173,7 +173,7 @@ func (e Orange) Delete(c *gin.Context) {
 
 	err = s.Remove(&req)
 	if err != nil {
-		e.Error(500, err, fmt.Sprintf("删除Orange失败，\r\n失败信息 %s", err.Error()))
+		e.Error(500, err, fmt.Sprintf("删除Apple失败，\r\n失败信息 %s", err.Error()))
         return
 	}
 	e.OK( req.GetId(), "删除成功")
