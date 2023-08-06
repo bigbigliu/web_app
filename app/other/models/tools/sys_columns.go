@@ -1,8 +1,8 @@
 package tools
 
 import (
+	"github.com/bigbigliu/web_app/app/admin/models"
 	"gorm.io/gorm"
-	"web_app/app/admin/models"
 )
 
 type SysColumns struct {

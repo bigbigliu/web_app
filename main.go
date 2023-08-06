@@ -2,10 +2,11 @@ package main
 
 import (
 	"errors"
+	"os"
+
 	"github.com/bigbigliu/web_app/cmd/app"
 	"github.com/go-admin-team/go-admin-core/sdk/pkg"
 	"github.com/spf13/cobra"
-	"os"
 
 	"github.com/bigbigliu/web_app/cmd/api"
 )
@@ -31,7 +32,6 @@ func init() {
 	rootCmd.AddCommand(app.StartCmd)
 }
 
-// Execute : apply commands
 func main() {
 	if err := rootCmd.Execute(); err != nil {
 		os.Exit(-1)

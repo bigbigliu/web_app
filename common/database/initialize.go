@@ -1,7 +1,6 @@
 package database
 
 import (
-	"os"
 	"time"
 
 	log "github.com/go-admin-team/go-admin-core/logger"
@@ -55,7 +54,6 @@ func setupSimpleDatabase(host string, c *toolsConfig.Database) {
 
 	if err != nil {
 		log.Fatal(pkg.Red(c.Driver+" connect error :"), err)
-		os.Exit(1)
 	} else {
 		log.Info(pkg.Green(c.Driver + " connect success !"))
 	}

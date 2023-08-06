@@ -28,7 +28,7 @@ func InitMiddleware(r *gin.Engine) {
 	r.Use(Secure)
 	// 链路追踪
 	r.Use(Trace())
+	r.Use()
 	sdk.Runtime.SetMiddleware(JwtTokenCheck, (*jwt.GinJWTMiddleware).MiddlewareFunc)
-	sdk.Runtime.SetMiddleware(RoleCheck, AuthCheckRole())
 	sdk.Runtime.SetMiddleware(PermissionCheck, actions.PermissionAction())
 }

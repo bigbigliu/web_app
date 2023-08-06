@@ -12,7 +12,7 @@ import (
 	"github.com/go-admin-team/go-admin-core/sdk/pkg/response"
 	"gorm.io/gorm"
 
-	"web_app/common/service"
+	"github.com/bigbigliu/web_app/common/service"
 )
 
 type Api struct {

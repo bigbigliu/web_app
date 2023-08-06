@@ -28,7 +28,6 @@ import (
 
 var (
 	ConfigPath = "config/settings.yml"
-	apiCheck   bool
 	StartCmd   = &cobra.Command{
 		Use:          "server",
 		Short:        "Start API server",

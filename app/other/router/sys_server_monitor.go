@@ -1,19 +1,17 @@
 package router
 
 import (
+	"github.com/bigbigliu/web_app/app/other/apis"
 	"github.com/gin-gonic/gin"
-	jwt "github.com/go-admin-team/go-admin-core/sdk/pkg/jwtauth"
-	"web_app/app/other/apis"
 )
 
 func init() {
-	routerCheckRole = append(routerCheckRole, registerSysServerMonitorRouter)
+	routerNoCheckRole = append(routerNoCheckRole, registerSysServerMonitorRouter)
 }
 
-// 需认证的路由代码
-func registerSysServerMonitorRouter(v1 *gin.RouterGroup, authMiddleware *jwt.GinJWTMiddleware) {
+func registerSysServerMonitorRouter(v1 *gin.RouterGroup) {
 	api := apis.ServerMonitor{}
-	r := v1.Group("/server-monitor").Use(authMiddleware.MiddlewareFunc())
+	r := v1.Group("/server-monitor")
 	{
 		r.GET("", api.ServerInfo)
 	}

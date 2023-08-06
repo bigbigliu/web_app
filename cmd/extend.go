@@ -1,3 +1,4 @@
+// package cmd 配置文件扩展
 package cmd
 
 var ExtConfig Extend

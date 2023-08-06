@@ -1,12 +1,12 @@
 package tools
 
 import (
+	common "github.com/bigbigliu/web_app/common/models"
 	"strings"
-	common "web_app/common/models"
 
 	"gorm.io/gorm"
 
-	"web_app/app/admin/models"
+	"github.com/bigbigliu/web_app/app/admin/models"
 )
 
 type SysTables struct {
@@ -139,6 +139,7 @@ func (e *SysTables) GetTree(tx *gorm.DB) ([]SysTables, error) {
 func (e *SysTables) Create(tx *gorm.DB) (SysTables, error) {
 	var doc SysTables
 	e.CreateBy = 0
+	e.PackageName = e.TBName
 	result := tx.Table("sys_tables").Create(&e)
 	if result.Error != nil {
 		err := result.Error

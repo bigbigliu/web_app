@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"bytes"
 	"encoding/json"
-	"github.com/bigbigliu/web_app/app/admin/service/dto"
 	"github.com/bigbigliu/web_app/common"
 	"io"
 	"io/ioutil"
@@ -117,11 +116,6 @@ func SetDBOperLog(c *gin.Context, clientIP string, statusCode int, reqUri string
 	l["userAgent"] = c.Request.UserAgent()
 	l["createBy"] = user.GetUserId(c)
 	l["updateBy"] = user.GetUserId(c)
-	if status == http.StatusOK {
-		l["status"] = dto.OperaStatusEnabel
-	} else {
-		l["status"] = dto.OperaStatusDisable
-	}
 	q := sdk.Runtime.GetMemoryQueue(c.Request.Host)
 	message, err := sdk.Runtime.GetStreamMessage("", global.OperateLog, l)
 	if err != nil {

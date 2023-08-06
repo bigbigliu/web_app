@@ -9,7 +9,7 @@ import (
 	_ "github.com/go-admin-team/go-admin-core/sdk/pkg/response"
 	"gorm.io/gorm"
 
-	"web_app/app/other/models/tools"
+	"github.com/bigbigliu/web_app/app/other/models/tools"
 )
 
 type SysTable struct {
@@ -119,27 +119,6 @@ func (e SysTable) GetSysTablesInfo(c *gin.Context) {
 	e.OK(mp, "")
 }
 
-func (e SysTable) GetSysTablesTree(c *gin.Context) {
-	e.Context = c
-	log := e.GetLogger()
-	db, err := e.GetOrm()
-	if err != nil {
-		log.Errorf("get db connection error, %s", err.Error())
-		e.Error(500, err, "数据库连接获取失败")
-		return
-	}
-
-	var data tools.SysTables
-	result, err := data.GetTree(db)
-	if err != nil {
-		log.Errorf("GetTree error, %s", err.Error())
-		e.Error(500, err, "抱歉未找到相关信息")
-		return
-	}
-
-	e.OK(result, "")
-}
-
 // Insert
 // @Summary 添加表结构
 // @Description 添加表结构
@@ -161,7 +140,12 @@ func (e SysTable) Insert(c *gin.Context) {
 		return
 	}
 
-	tablesList := strings.Split(c.Request.FormValue("tables"), ",")
+	tablesList := strings.Split(c.Query("table"), ",")
+	if len(tablesList) != 1 {
+		e.Error(400, nil, "一次只能生成一张表的代码")
+		return
+	}
+
 	for i := 0; i < len(tablesList); i++ {
 
 		data, err := genTableInit(db, tablesList, i, c)
@@ -178,6 +162,7 @@ func (e SysTable) Insert(c *gin.Context) {
 			return
 		}
 	}
+
 	e.OK(nil, "添加成功")
 
 }
