@@ -45,7 +45,10 @@ make docker-build
 ```bash
 # sys_columns.sql和sys_tables.sql必须内置到你的数据库中，才能进行代码生成
 # 数据库新建表之后运行下列命令，自动生成crud代码
-curl --location 'http://localhost:8000/gen/code?table=orange&app_name=orange' \
---data ''
+wget --no-check-certificate --quiet \
+  --method GET \
+  --timeout=0 \
+  --header '' \
+   'http://localhost:8000/gen/code?table=pink&app_name=pink'
 ```
 
